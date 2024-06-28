@@ -1,2 +1,2 @@
 # MeuProEventos
- Proejto FullStack em C#
+ Projeto FullStack em C#
