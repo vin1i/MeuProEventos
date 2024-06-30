@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MeuProEvento.API.Models;
 using System.Collections.Generic;
+using MeuProEvento.API.Data;
 
 namespace MeuProEvento.API.Controllers
 {
@@ -8,47 +9,36 @@ namespace MeuProEvento.API.Controllers
     [Route("api/[controller]")]
     public class EventoController : ControllerBase
     {
-        public IEnumerable<Evento> _evento = new Evento[]
-        {
-            new Evento
-            {
-                EventoId = 1,
-                Local = "Teresina-PI",
-                DataEvento = DateTime.Now.AddDays(8).ToString("dd-MM-yyyy"),
-                Tema = "Teste API",
-                QtdPessoas = 100,
-                Lote = "1º Lote",
-                ImagemURL = "imagem.jpg"
-            },
-            new Evento
-            {
-                EventoId = 2,
-                Local = "São Luís-MA",
-                DataEvento = DateTime.Now.AddDays(15).ToString("dd-MM-yyyy"),
-                Tema = "Outro Teste API",
-                QtdPessoas = 200,
-                Lote = "2º Lote",
-                ImagemURL = "outra_imagem.jpg"
-            }
-        };
+     
+        private readonly DataContext _context;
 
-        public EventoController()
+        public EventoController(DataContext context)
         {
+            _context = context;
         }
 
         [HttpGet]
         public IEnumerable<Evento> Get()
         {
-            return _evento;
+            return _context.Eventos;
         }
 
 
         
-        [HttpGet("{id}")]
-        public IEnumerable<Evento> GetById(int id)
-        {
-            return _evento.Where(evento => evento.EventoId == id);
-        }
+ [HttpGet("{id}")]
+public ActionResult<Evento> GetById(int id)
+{
+    var evento = _context.Eventos.FirstOrDefault(e => e.EventoId == id);
+    
+    if (evento == null)
+    {
+        return NotFound($"Nenhum evento encontrado com o ID {id}."); // Mensagem personalizada
+    }
+
+    else 
+    {
+        return Ok(evento); // Retorna 200 OK com o evento encontrado
+    }}
 
 
 
