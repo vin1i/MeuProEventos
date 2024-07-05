@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "PiWcJTfl94kGAfi4i2qestMDdmw2y0uLg4aSsAx2rTU=",
+  "Source": "MeuProEvento.API",
+  "BasePath": "_content/MeuProEvento.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

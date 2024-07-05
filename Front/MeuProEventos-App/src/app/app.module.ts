@@ -9,9 +9,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavComponent } from './nav/nav.component';
 
 @NgModule({
-  declarations: [AppComponent, EventosComponent, PalestrantesComponent, NavComponent],
+  declarations: [
+    AppComponent,
+    EventosComponent,
+    PalestrantesComponent,
+    NavComponent,
+  ],
 
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
