@@ -2,13 +2,19 @@
 <hr />
 <form action="" class="form-inline">
   <div class="form-group mb-2">
-    <input type="text" class="form-control mr-2" placeholder="Pesquisa" />
+    <input
+      type="text"
+      class="form-control mr-2"
+      placeholder="Pesquisa"
+      (input)="filterEventos($event.target.value)"
+    />
     <button class="btn btn-outline-success">Buscar</button>
   </div>
 </form>
 <table class="table table-striped">
   <thead class="thead-dark">
     <tr>
+      <th>#</th>
       <th>
         <button
           type="button"
@@ -18,7 +24,6 @@
           {{ showImage ? "Ocultar" : "Exibir" }}
         </button>
       </th>
-      <th>#</th>
       <th>Tema</th>
       <th>Local</th>
       <th>Data</th>
@@ -27,8 +32,8 @@
       <th>Opções</th>
     </tr>
   </thead>
-  <tbody *ngIf="eventos && eventos.length">
-    <tr *ngFor="let evento of eventos">
+  <tbody>
+    <tr *ngFor="let evento of eventosFiltered">
       <td>
         <img
           [ngClass]="showImage ? 'visible-image' : 'hidden-image'"
@@ -48,7 +53,7 @@
       <td></td>
     </tr>
   </tbody>
-  <tfoot *ngIf="!eventos.length">
+  <tfoot *ngIf="eventosFiltered.length === 0">
     <tr>
       <td colspan="8" class="text-center">
         <h4>Nenhum evento encontrado</h4>
@@ -123,4 +128,3 @@
   <p><b>Quantidade de Pessoas:</b> {{ evento.qtdPessoas }}</p>
   <p><b>Lote:</b> {{ evento.lote }}</p>
   <p><b>Imagem:</b> {{ evento.imagemURL }}</p> -->
--->
