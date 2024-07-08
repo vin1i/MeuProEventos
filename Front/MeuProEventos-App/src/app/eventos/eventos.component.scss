@@ -1,0 +1,12 @@
+.hidden-image {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+  opacity: 0;
+}
+
+.visible-image {
+  max-height: 500px; /* Ajuste isso conforme necessário */
+  transition: max-height 0.5s ease-in, opacity 0.5s ease-in;
+  opacity: 1;
+}
